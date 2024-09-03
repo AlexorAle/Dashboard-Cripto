@@ -1,0 +1,74 @@
+/* Asegura que todo el contenedor del dashboard tenga un fondo uniforme */
+.dashboard-container {
+  display: flex;
+  min-height: 100vh; /* Ocupa toda la altura de la ventana para evitar el fondo blanco */
+  background-color: #1c2237; /* Color de fondo uniforme */
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #1c2237; /* Fondo consistente */
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* Evita que el contenido se desborde */
+}
+
+.dashboard-title {
+  font-size: 3.125rem;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Asegura que la top-section se alinee horizontalmente */
+.top-section {
+  display: flex;
+  justify-content: space-between; /* Asegura que los módulos se distribuyan a lo largo del espacio disponible */
+  align-items: stretch; /* Mantiene la alineación en altura entre los módulos */
+  gap: 20px; /* Espacio entre los módulos */
+}
+
+.quotes-section {
+  flex: 1; /* Permite que este módulo crezca para llenar el espacio disponible */
+  background-color: #2a3555;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.indicators-section {
+  min-width: 250px; /* Tamaño mínimo para el módulo de indicadores */
+  max-width: 30%; /* Limita el tamaño máximo del módulo de indicadores */
+  background-color: #2a3555;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajusta el comportamiento de la sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #2a3555;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+/* Estilo para asegurar que el fondo sea continuo y no haya parches blancos */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1c2237;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  height: 100%; /* Asegura que el fondo ocupe toda la página */
+}
+
+html, body, #root {
+  height: 100%; /* Asegura que el fondo ocupe toda la página */
+}

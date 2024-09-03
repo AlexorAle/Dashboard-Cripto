@@ -1,0 +1,232 @@
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0a0e17;
+  color: #e0e0e0;
+}
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #1c2237;
+  transition: all 0.3s ease;
+  padding-top: 20px;
+  overflow-x: hidden;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  cursor: pointer;
+  color: #5e72e4;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+  background-color: #252d47;
+}
+
+.sidebar-menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: #8f9bb3;
+}
+
+.sidebar-menu li:hover {
+  background-color: #252d47;
+}
+
+.sidebar-menu li svg {
+  margin-right: 15px;
+  min-width: 24px;
+}
+
+.sidebar.collapsed .sidebar-menu li span {
+  display: none;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed + .main-content {
+  margin-left: 60px;
+}
+
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.prices-section {
+  margin-bottom: 3rem;
+}
+
+.prices-section h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-align: left;
+  margin-bottom: 1.5rem;
+  color: #8f9bb3;
+}
+
+.prices-grid {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.crypto-box {
+  background: linear-gradient(145deg, #1c2237, #252d47);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.crypto-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+}
+
+.crypto-details {
+  flex-grow: 1;
+}
+
+.crypto-box h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  color: #8f9bb3;
+}
+
+.crypto-box p {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff;
+}
+
+.crypto-box .price-change {
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+.operations-section {
+  background-color: #1c2237;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.operations-section h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.exchange-operations {
+  margin-bottom: 2rem;
+}
+
+.exchange-header {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #5e72e4;
+  text-align: center;
+}
+
+.operations-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: #e0e0e0;
+}
+
+.operations-table th,
+.operations-table td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #2a3555;
+}
+
+.operations-table th {
+  font-weight: 600;
+  color: #8f9bb3;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.operations-table tr:hover {
+  background-color: rgba(94, 114, 228, 0.1);
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.load-data-button {
+  background-color: #5e72e4;
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.load-data-button:hover {
+  background-color: #4c5fe2;
+  transform: translateY(-2px);
+}

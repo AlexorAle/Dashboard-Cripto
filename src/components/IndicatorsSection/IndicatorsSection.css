@@ -1,0 +1,31 @@
+/* Estilos para IndicatorsSection */
+.indicators-section {
+  background-color: #2a3555;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  min-height: 300px; /* Aumenta la altura mínima para acomodar el medidor */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%; /* Ocupa el 50% del contenedor principal */
+}
+
+.rsi-gauge-container {
+  width: 100%;
+  max-width: 300px; /* Limita el tamaño máximo del medidor */
+  height: 300px;    /* Asegura que el contenedor tenga suficiente altura */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.indicators-section h2 {
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
