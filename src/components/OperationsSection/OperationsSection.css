@@ -1,47 +1,33 @@
-/* Aseguramos que los estilos sean específicos para OperationsSection */
 .operations-section {
-  margin-top: 20px;
   background-color: #2a3555;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-.operations-section .operations-table-wrapper {
-  margin-bottom: 20px; /* Espacio entre las tablas */
-}
-
-.operations-section .operations-table {
+/* Ajustar la tabla de operaciones */
+.operations-table {
   width: 100%;
   border-collapse: collapse;
-  color: #ffffff;
-  font-family: 'Roboto', sans-serif;
-}
-
-.operations-section .operations-table th, .operations-section .operations-table td {
-  padding: 15px;
-  text-align: left;
-  font-size: 1rem;
-  border-bottom: 1px solid #374a67;
-}
-
-.operations-section .operations-table th {
-  background-color: #1c2237;
-  font-weight: bold;
-}
-
-.operations-section .operations-table tr:nth-child(even) {
   background-color: #2a3555;
+  color: #fff;
 }
 
-.operations-section .operations-table tr:hover {
-  background-color: #374a67;
+.operations-table th, .operations-table td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #1f2b40;
 }
 
-.operations-section .operations-table td {
-  border-right: 1px solid #374a67;
+.operations-table th {
+  background-color: #1f2b40;
+  font-size: 16px;
 }
 
-.operations-section .operations-table td:last-child {
-  border-right: none;
+.operations-table td {
+  font-size: 14px;
+}
+
+.operations-table tr:hover {
+  background-color: #1f2b40;
 }

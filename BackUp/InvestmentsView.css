@@ -1,0 +1,90 @@
+.investments-container {
+  background-color: #1c2237;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  color: #e0e0e0;
+  max-width: 2400px;
+  margin: 0 auto;
+}
+
+.investments-container h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.investment-content {
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra verticalmente dentro del contenedor */
+  gap: 3rem;
+}
+
+.investment-chart {
+  flex: 0 1 45%;
+}
+
+.investment-details {
+  flex: 0 1 50%; /* Ajusta el tamaño de la tabla */
+}
+
+.investment-details h3 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.investment-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: #2a3555;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.investment-table th,
+.investment-table td {
+  padding: 20px; /* Aumenta el tamaño de la celda para agrandar la fuente */
+  font-size: 18px; /* Incrementa el tamaño de la fuente */
+  text-align: center;
+  color: #e0e0e0;
+  vertical-align: middle;
+}
+
+.investment-table th {
+  background-color: #2b6cb0;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.investment-table tbody tr.even-row {
+  background-color: #2c3e50;
+}
+
+.investment-table tbody tr.odd-row {
+  background-color: #243447;
+}
+
+.investment-table tfoot td {
+  background-color: #2b6cb0;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.investment-table tfoot tr td {
+  border-top: 2px solid #fff;
+}
+
+.investment-table tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+.investment-table tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}

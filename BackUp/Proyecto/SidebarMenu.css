@@ -1,0 +1,32 @@
+.sidebar {
+  width: 250px;
+  background-color: #2a3555;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar .menu-item {
+  padding: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.sidebar .menu-item:hover {
+  background-color: #374a67;
+}
+
+.sidebar-toggle {
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+}

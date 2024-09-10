@@ -1,45 +1,32 @@
-/* Aseguramos que los estilos sean específicos para QuotesSection */
 .quotes-section {
-  background-color: #2a3555;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   display: flex;
-  justify-content: space-evenly; /* Distribuye el espacio entre los elementos de forma equitativa */
+  justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
 }
 
-.quotes-section .quotes-list {
+.quotes-list {
   display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap; /* Permite que las cajas se distribuyan en múltiples filas si es necesario */
+  justify-content: space-between;
   width: 100%;
 }
 
-.quotes-section .quote-item {
-  background-color: #1c2237;
-  border-top: 2px solid #374a67;
-  color: #ffffff;
-  padding: 10px;
-  border-radius: 5px;
-  margin: 5px;
-  width: 200px; /* Tamaño fijo para que todos los cuadros tengan la misma dimensión */
+.quote-item {
+  background-color: #1f2b40;
+  padding: 10px 20px;
+  border-radius: 8px;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  width: 150px; /* Ajustamos el tamaño para que no sean tan grandes */
 }
 
-.quotes-section .quote-header {
-  background-color: #000;
-  padding: 5px;
-  font-weight: bold;
+.quote-header {
+  font-size: 16px;
+  color: #fff;
 }
 
-.quotes-section .quote-price {
-  background-color: #619bfc;
-  padding: 10px;
-  font-size: 1.5rem;
-  color: white;
-  border-radius: 0 0 5px 5px;
-  overflow: hidden; /* Evita que el texto sobresalga */
-  text-overflow: ellipsis;
+.quote-price {
+  font-size: 22px;
+  color: #00f9a9;
+  margin-top: 5px;
 }

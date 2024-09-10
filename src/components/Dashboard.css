@@ -1,74 +1,43 @@
-/* Asegura que todo el contenedor del dashboard tenga un fondo uniforme */
-.dashboard-container {
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.crypto-section, .operations-section, .progress-section {
+  background-color: #2a3555;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.crypto-container {
   display: flex;
-  min-height: 100vh; /* Ocupa toda la altura de la ventana para evitar el fondo blanco */
-  background-color: #1c2237; /* Color de fondo uniforme */
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
-.main-content {
-  flex: 1;
-  padding: 20px;
-  background-color: #1c2237; /* Fondo consistente */
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  overflow: hidden; /* Evita que el contenido se desborde */
-}
-
-.dashboard-title {
-  font-size: 3.125rem;
-  color: #ffffff;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* Asegura que la top-section se alinee horizontalmente */
-.top-section {
-  display: flex;
-  justify-content: space-between; /* Asegura que los módulos se distribuyan a lo largo del espacio disponible */
-  align-items: stretch; /* Mantiene la alineación en altura entre los módulos */
-  gap: 20px; /* Espacio entre los módulos */
-}
-
-.quotes-section {
-  flex: 1; /* Permite que este módulo crezca para llenar el espacio disponible */
-  background-color: #2a3555;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-.indicators-section {
-  min-width: 250px; /* Tamaño mínimo para el módulo de indicadores */
-  max-width: 30%; /* Limita el tamaño máximo del módulo de indicadores */
-  background-color: #2a3555;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Ajusta el comportamiento de la sidebar */
-.sidebar {
-  width: 250px;
-  background-color: #2a3555;
+.crypto-item {
+  width: 150px;
+  background-color: #1e2a44;
   padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  text-align: center;
 }
 
-.sidebar.collapsed {
-  width: 60px;
+.operations-section {
+  grid-column: span 2;
 }
 
-/* Estilo para asegurar que el fondo sea continuo y no haya parches blancos */
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #1c2237;
-  color: #ffffff;
-  font-family: 'Roboto', sans-serif;
-  height: 100%; /* Asegura que el fondo ocupe toda la página */
+.operations-table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-html, body, #root {
-  height: 100%; /* Asegura que el fondo ocupe toda la página */
+.operations-table th, .operations-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }

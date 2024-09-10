@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import * as XLSX from 'xlsx';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 import './InvestmentsView.css';
@@ -44,22 +44,7 @@ const InvestmentsView = () => {
     fetchInvestmentData();
   }, []);
 
-  // Memoize groupedData to avoid recalculating it unless investmentData changes
-  const groupedData = useMemo(() => {
-    const grouped = investmentData.reduce((acc, curr) => {
-      const category = curr.categoria;
-      if (!acc[category]) {
-        acc[category] = { categoria: category, valor: 0 };
-      }
-      acc[category].valor += curr.valor;
-      return acc;
-    }, {});
-
-    return Object.values(grouped);
-  }, [investmentData]);
-
-  // Memoize custom label function
-  const renderCustomLabel = useCallback(({ cx, cy, midAngle, outerRadius, percent, index }) => {
+  const renderCustomLabel = ({ cx, cy, midAngle, outerRadius, percent, index }) => {
     const RADIAN = Math.PI / 180;
     const radius = outerRadius + 30;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
@@ -69,26 +54,41 @@ const InvestmentsView = () => {
       <text
         x={x}
         y={y}
-        fill="black"
+        fill={COLORS[index % COLORS.length]}
         textAnchor={x > cx ? 'start' : 'end'}
         dominantBaseline="central"
+        style={{ fontSize: '16px', fontWeight: 'bold' }}
       >
-        {`${groupedData[index].categoria} (${(percent * 100).toFixed(0)}%)`}
+        {`${investmentData[index].categoria} (${Math.ceil(percent * 100)}%)`}
       </text>
     );
-  }, [groupedData]);
+  };
+
+  const groupedData = useMemo(() => {
+    const grouped = investmentData.reduce((acc, item) => {
+      if (!acc[item.categoria]) {
+        acc[item.categoria] = 0;
+      }
+      acc[item.categoria] += item.valor;
+      return acc;
+    }, {});
+
+    return Object.entries(grouped).map(([categoria, valor]) => ({ categoria, valor }));
+  }, [investmentData]);
 
   return (
-    <div className="investments-view">
-      <div className="investment-summary">
-        <h2>Investments Summary</h2>
-        <div className="chart-container">
-          {groupedData.length ? (
-            <ResponsiveContainer width="100%" height={400}>
-              <PieChart>
+    <div className="investments-container">
+      <h2>Asset Allocation by Category</h2>
+      <div className="investment-content">
+        <div className="investment-chart">
+          {groupedData.length > 0 ? (
+            <ResponsiveContainer width="100%" height={480}>
+              <PieChart width={400} height={400}>
                 <Pie
                   data={groupedData}
-                  labelLine={false}
+                  cx="50%"
+                  cy="50%"
+                  labelLine={true}
                   label={renderCustomLabel}
                   outerRadius={144}
                   fill="#8884d8"

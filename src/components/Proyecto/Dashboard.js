@@ -5,14 +5,14 @@ import QuotesSection from './QuotesSection/QuotesSection';
 import IndicatorsSection from './IndicatorsSection/IndicatorsSection';
 import OperationsSection from './OperationsSection/OperationsSection';
 
-//const DashboardView = lazy(() => import('./DashboardView'));
+const DashboardView = lazy(() => import('./DashboardView'));
 const InvestmentsView = lazy(() => import('./InvestmentsView'));
 
 const Dashboard = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [currentSection, setCurrentSection] = useState('dashboard');
-  const [prices, setPrices] = useState({});  // Estado para precios
-  const [operations, setOperations] = useState([]);  // Estado para operaciones
+  const [prices, setPrices] = useState({});
+  const [operations, setOperations] = useState([]);
 
   const toggleSidebar = () => {
     setSidebarCollapsed(!sidebarCollapsed);
@@ -26,12 +26,12 @@ const Dashboard = () => {
         setCurrentSection={setCurrentSection}
       />
       <div className={`main-content ${sidebarCollapsed ? 'expanded' : ''}`}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Spinner />}> //={<div>Loading...</div>}>
           {currentSection === 'dashboard' && (
             <>
-              <QuotesSection prices={prices} setPrices={setPrices} />  {/* Pasar `setPrices` */}
+              <QuotesSection prices={prices} />
               <IndicatorsSection />
-              <OperationsSection operations={operations} setOperations={setOperations} />  {/* Pasar `setOperations` */}
+              <OperationsSection operations={operations} />
             </>
           )}
           {currentSection === 'investments' && <InvestmentsView />}

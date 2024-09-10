@@ -1,66 +1,59 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useContext } from 'react';
+import * as XLSX from 'xlsx'; 
+import { GlobalContext } from '../GlobalContext'; 
+import { formatNumber } from '../utils/formatters'; 
 
-const OperationsSection = ({ operations, formatNumber, formatPercentage }) => {
-  const binanceOps = operations.filter(op => op.Exchange === 'binance');
-  const bingxOps = operations.filter(op => op.Exchange === 'bingx');
+const OperationsSection = () => {
+  const { operations, setOperations } = useContext(GlobalContext);
 
-  const renderTable = (ops, exchangeName) => (
-    <div className="operations-table-wrapper">
-      <h3>{exchangeName}</h3>
-      <table className="operations-table">
-        <thead>
-          <tr>
-            <th>Criptomoneda</th>
-            <th>Precio de Compra</th>
-            <th>Cantidad</th>
-            <th>Dinero Invertido</th>
-            <th>Moneda</th>
-            <th>% Ganancia Objetivo</th>
-            <th>Precio Objetivo</th>
-            <th>% Ganancia Actual</th>
-          </tr>
-        </thead>
-        <tbody>
-          {ops.map((op, index) => {
-            const precioObjetivo = op['Precio de Compra'] * (1 + op['% Objetivo'] / 100);
-            const gananciaActual = op['Precio Actual']
-              ? ((op['Precio Actual'] - op['Precio de Compra']) / op['Precio de Compra']) * 100
-              : 0;
+  const readExcel = async () => {
+    try {
+      const response = await fetch('/operaciones.xlsx');
+      const arrayBuffer = await response.arrayBuffer();
+      const data = new Uint8Array(arrayBuffer);
+      const workbook = XLSX.read(data, { type: 'array' });
+      const firstSheetName = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[firstSheetName];
+      const jsonData = XLSX.utils.sheet_to_json(worksheet);
+      setOperations(jsonData);
+    } catch (error) {
+      console.error('Error al leer el archivo Excel:', error);
+    }
+  };
 
-            return (
-              <tr key={index}>
-                <td>{op.Criptomoneda}</td>
-                <td>{formatNumber(op['Precio de Compra'])}</td>
-                <td>{formatNumber(op.Cantidad)}</td>
-                <td>{formatNumber(op['Dinero Invertido'])}</td>
-                <td>{op.Moneda}</td>
-                <td>{formatPercentage(op['% Objetivo'])}</td>
-                <td>{formatNumber(precioObjetivo)}</td>
-                <td style={{ color: gananciaActual >= 0 ? 'lightgreen' : 'red' }}>
-                  {formatPercentage(gananciaActual)}
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
-  );
+  useEffect(() => {
+    readExcel();
+  }, []);
 
   return (
     <div className="operations-section">
       <h2>Operaciones</h2>
-      {renderTable(binanceOps, 'Binance')}
-      {renderTable(bingxOps, 'BINGX')}
+      <table>
+        <thead>
+          <tr>
+            <th>Criptomoneda</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          {operations.length > 0 ? (
+            operations.map((operation, index) => (
+              <tr key={index}>
+                <td>{operation.Criptomoneda}</td>
+                <td>{formatNumber(operation.Cantidad)}</td>
+                <td>{formatNumber(operation.Precio)}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="3">No hay operaciones</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
     </div>
   );
-};
-
-OperationsSection.propTypes = {
-  operations: PropTypes.array.isRequired,
-  formatNumber: PropTypes.func.isRequired,
-  formatPercentage: PropTypes.func.isRequired,
 };
 
 export default OperationsSection;

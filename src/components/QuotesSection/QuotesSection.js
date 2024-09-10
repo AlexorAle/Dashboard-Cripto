@@ -1,7 +1,27 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useContext } from 'react';
+import { GlobalContext } from '../GlobalContext'; 
+import { formatNumber } from '../utils/formatters'; 
 
-const QuotesSection = ({ prices, formatNumber }) => {
+const QuotesSection = () => {
+  const { prices, setPrices } = useContext(GlobalContext);
+
+  useEffect(() => {
+    const fetchPrices = async () => {
+      try {
+        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd');
+        const data = await response.json();
+        setPrices({
+          'BTC_USD': { price: data.bitcoin.usd },
+          'ETH_USD': { price: data.ethereum.usd },
+        });
+      } catch (error) {
+        console.error('Error al obtener precios:', error);
+      }
+    };
+
+    fetchPrices();
+  }, [setPrices]);
+
   return (
     <div className="quotes-section">
       <h2>Cotizaciones en Tiempo Real</h2>
@@ -9,17 +29,12 @@ const QuotesSection = ({ prices, formatNumber }) => {
         {Object.entries(prices).map(([pair, data]) => (
           <div key={pair} className="quote-item">
             <div className="quote-header">{pair}</div>
-            <div className="quote-price">{formatNumber(data.price)}</div>
+            <div className="quote-price">${formatNumber(data.price)}</div>
           </div>
         ))}
       </div>
     </div>
   );
-};
-
-QuotesSection.propTypes = {
-  prices: PropTypes.object.isRequired,
-  formatNumber: PropTypes.func.isRequired,
 };
 
 export default QuotesSection;

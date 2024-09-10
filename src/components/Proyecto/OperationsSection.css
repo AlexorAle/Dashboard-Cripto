@@ -1,0 +1,31 @@
+.operations-section {
+  background-color: #2a3555;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+}
+
+.operations-section .operations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.operation-item {
+  background-color: #1c2237;
+  color: #ffffff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.operation-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.operation-detail {
+  font-size: 1rem;
+}
